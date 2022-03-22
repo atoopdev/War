@@ -44,3 +44,27 @@ function myArrayFilter(arr, callback){
 // get new filtered array using function above
 const newPeopleWithPets = myArrayFilter(people, checkPet)
 console.log("newPeopleWithPets: ", newPeopleWithPets)
+
+// ----------------------------------------------------------------------
+// Given the array below, chain the `.filter` and `.map` array methods together to turn the array into an array of string email addresses of only the people in the array who voted. Log the array of email addresses to the console
+
+const voters = [
+    {name: "Joe", email: "joe@joe.com", voted: true},
+    {name: "Jane", email: "jane@jane.com", voted: true},
+    {name: "Bo", email: "bo@bo.com", voted: false},
+    {name: "Bane", email: "bane@bane.com", voted: false}
+]
+
+function checkHasVoted(person){
+    return person.voted
+}
+
+// method chaining
+
+// const peopleWhoVoted = myArrayFilter(voters, checkHasVoted)
+// determine who voted and then for each return email address
+// peopleWhoVoted = voters.filter(checkHasVoted).map(voted => voted.email)
+// another way to do without writing own function
+peopleWhoVoted = voters.filter(voter => voter.voted).map(voter => voter.email)
+
+console.log(peopleWhoVoted)

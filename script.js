@@ -17,3 +17,9 @@ function callBack(){
     console.log("I finally ran!")
 }
 
+// promise - statement of what will happen - you will get a response
+// promise states
+// pending - yet to be completed
+// fullfilled or resolved - response returned
+//  rejected - no response within given time frame
+// .then() runs when promise is fullfilled
