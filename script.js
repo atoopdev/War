@@ -33,7 +33,7 @@ function drawCards(){
         }
         console.log("Cards array: ", cards)
     })
-    setTimeout(renderCards, 3000)
+    setTimeout(renderCards, 2000)
 }
 else{
     console.log("Need new deck")

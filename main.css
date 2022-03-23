@@ -28,10 +28,11 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 
 img {
-  width: 100px;
+  width: calc(120px * 5 / 7);
   margin: 1em;
 }
 
@@ -67,8 +68,20 @@ img {
   align-self: flex-start;
 }
 
+#drawcards {
+  align-self: stretch;
+}
+
 .cards-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.card-slot {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: calc(120px * 5 / 7);
+  height: 120px;
+  margin: 1em;
 }
