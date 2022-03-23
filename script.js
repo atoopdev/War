@@ -48,8 +48,7 @@ function renderCards(){
     for(let i=0;i<2;i++){
         console.log("In for loop")
          cardsHTML+=
-            `
-            <img src="${cards[i].image}"/>`
+            `<img src="${cards[i].image}"/>`
             console.log("Cardshtml in for loop", cardsHTML)
     }
     document.getElementById("cardsEL").innerHTML = cardsHTML

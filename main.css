@@ -22,14 +22,19 @@ h3 {
 body {
   margin: 0;
   font-weight: 300;
-  background-color: #fff;
-  color: #1d3557;
+  background-color: green;
+  color: #fff;
+  background-image: url(./table.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 img {
   width: 100px;
   margin: 1em;
 }
+
 .container {
   margin: 50px auto;
   min-width: 340px;
@@ -37,23 +42,33 @@ img {
   max-width: 550px;
   height: 550px;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.button-container {
+.game-header {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 .btn {
-  padding: 1em 2em;
+  padding: 1em 1.5em;
   border: 1px solid black;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 1rem;
   margin: 1em;
-  display: block;
+  background-color: yellow;
+  cursor: pointer;
+}
+
+#newdeck {
+  align-self: flex-start;
 }
 
 .cards-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
