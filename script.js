@@ -29,11 +29,13 @@ function drawCards(){
     .then(data =>{
         console.log("Drawn cards: ", data)
         for(let card of data.cards){
-            cards.push(card)
+            // changing from pop to allow new cards dealt to auto appear
+            cards.unshift(card)
         }
         console.log("Cards array: ", cards)
     })
-    setTimeout(renderCards, 2000)
+    // timeout set to allow time. api response time very slow and was causing errors
+    setTimeout(renderCards, 3000)
 }
 else{
     console.log("Need new deck")
@@ -43,16 +45,56 @@ else{
 function renderCards(){
     let cardsHTML = ""
     if(cards){
-    console.log("Rendering cards in renderCards: ", cards)
-    console.log("Cards length: ", cards.length)
-    for(let i=0;i<2;i++){
-        console.log("In for loop")
+    // console.log("Rendering cards in renderCards: ", cards)
+    // console.log("Cards length: ", cards.length)
+    for(let i=0;i<numCards;i++){
+        // console.log("In for loop")
          cardsHTML+=
             `<img src="${cards[i].image}"/>`
-            console.log("Cardshtml in for loop", cardsHTML)
+            // console.log("Cardshtml in for loop", cardsHTML)
     }
     document.getElementById("cardsEL").innerHTML = cardsHTML
     }
+    // placing here because of api data return delay
+    // was causing problems in main
+    determineHigherScore(cards[0].value, cards[1].value)
+}
+
+function determineScore(card){
+    if(card <=10){
+        console.log(`Card is: ${card} value is ${Number(card)}`)
+        return Number(card)
+    }
+    if(card==="JACK"){
+        console.log(`Card is: ${card} returning 11`)
+        return 11
+    }
+    if(card==="QUEEN"){
+        console.log(`Card is: ${card} returning 12`)
+        return 12
+    }
+    if(card==="KING"){
+        console.log(`Card is: ${card} returning 13`)
+        return 13
+    }
+    else{
+        console.log(`Card is: ${card} returning 14`)
+        return 14
+    }
+}
+
+function determineHigherScore(card1, card2){
+    let card1_score = determineScore(card1)
+    console.log("Card1_score: ", card1_score)
+    let card2_score = determineScore(card2)
+    console.log("Card2_score: ", card2_score)
+    if(card1_score===card2_score){
+        console.log("cards equal")
+    }else if(card1_score>card2_score){
+            console.log("Card 1 has larger score")
+        }else{
+            console.log("card 2 has larger score")
+        }
 }
 
 // setTimeout(callBack, 2000)
