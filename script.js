@@ -57,7 +57,7 @@ function renderCards(){
     }
     // placing here because of api data return delay
     // was causing problems in main
-    determineHigherScore(cards[0].value, cards[1].value)
+    document.getElementById("game-announcements").innerText = determineHigherScore(cards[0].value, cards[1].value)
 }
 
 function determineScore(card){
@@ -96,13 +96,13 @@ function determineHigherScore(card1, card2){
     document.getElementById("myscore").innerText= `Me: ${card2_score}`
     if(card1_score===card2_score){
         console.log("cards equal")
-        document.getElementById("game-announcements").innerText = "Its a tie!"
+        return "Its a tie!"
     }else if(card1_score>card2_score){
             console.log("Card 1 has larger score")
-            document.getElementById("game-announcements").innerText = "Computer wins!"
+            return "Computer wins!"
         }else{
             console.log("card 2 has larger score")
-            document.getElementById("game-announcements").innerText = "You win!"
+            return "You win!"
         }
 }
 
