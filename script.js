@@ -84,16 +84,25 @@ function determineScore(card){
 }
 
 function determineHigherScore(card1, card2){
-    let card1_score = determineScore(card1)
+    // another option is to put all cards values in an array ordered from smallest to largest. you can then look up the array index of each value. larger index num = larger value.
+    // arrayofcards = ["2", "3"..."KING", "ACE"]
+    // const card1ValueIndex = arrayofcards.indexOf(card1.value)
+    // const card2ValueIndex = arrayofcards.indexOf(card2.value)
+    const card1_score = determineScore(card1)
     console.log("Card1_score: ", card1_score)
-    let card2_score = determineScore(card2)
+    document.getElementById("computerscore").innerText= `Computer: ${card1_score}`
+    const card2_score = determineScore(card2)
     console.log("Card2_score: ", card2_score)
+    document.getElementById("myscore").innerText= `Me: ${card2_score}`
     if(card1_score===card2_score){
         console.log("cards equal")
+        document.getElementById("game-announcements").innerText = "Its a tie!"
     }else if(card1_score>card2_score){
             console.log("Card 1 has larger score")
+            document.getElementById("game-announcements").innerText = "Computer wins!"
         }else{
             console.log("card 2 has larger score")
+            document.getElementById("game-announcements").innerText = "You win!"
         }
 }
 
