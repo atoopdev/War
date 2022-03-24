@@ -20,7 +20,8 @@ fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/", {method: "GE
 .then(data =>{
     console.log(data)
     deck_id = data.deck_id
-    console.log("Deck id: ", deck_id) 
+    console.log("Deck id: ", deck_id)
+    document.getElementById("remainingcards").innerText = `Remaining cards: ${data.remaining}` 
 })
 deck_done = false
 document.getElementById("drawcards").style.display = "block"
@@ -31,7 +32,6 @@ function drawCards(){
     if(deck_id&&deck_done===false){
     // console.log("Drawing cards")
     // console.log("deck id in draw cards: ", deck_id)
-    // console.log(`https://apis.scrimba.com/deckofcards/api/deck/${deck_id}/draw/?count=${numCards}`)
     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deck_id}/draw/?count=2`, {method: "GET"})
     .then(response => response.json())
     .then(data =>{
