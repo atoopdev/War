@@ -37,20 +37,22 @@ function drawCards(){
     .then(data =>{
         console.log("Drawn cards: ", data)
         document.getElementById("remainingcards").innerText = `Remaining cards: ${data.remaining}`
-        // if no cards left
-        if(data.remaining===0){
-            deck_done===true
-            document.getElementById("game-announcements").innerText = "Deck finished! Draw new deck"
-            document.getElementById("drawcards").style.display = "none"
-        }
         for(let card of data.cards){
             // changing from pop to allow new cards dealt to auto appear
             cards.unshift(card)
         }
         console.log("Cards array: ", cards)
+    renderCards()
+        // if no cards left
+    if(data.remaining===0){
+        deck_done===true
+        // gets overwritten by score
+        document.getElementById("game-announcements").innerText = "Deck finished! Draw new deck"
+        document.getElementById("drawcards").style.display = "none"
+    }
     })
-    // timeout set to allow time. api response time very slow and was causing errors
-    setTimeout(renderCards, 3000)
+    
+    
 }
 else{
     console.log("Need new deck")
