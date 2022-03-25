@@ -46,7 +46,9 @@ function drawCards(){
         // if no cards left
     if(data.remaining===0){
         deck_done===true
-        document.getElementById("game-announcements").innerText = "Deck finished! Draw new deck"
+        // let winner = determineWinner()
+        document.getElementById("game-announcements").innerText = `Deck finished! ${determineWinner()}`
+        document.getElementById("remainingcards").innerText = "Please draw new deck."
         // hide draw cards button
         disableDrawCards()
     }
@@ -57,6 +59,16 @@ function drawCards(){
 else{
     console.log("Need new deck")
 }
+}
+
+function determineWinner(){
+        if(computer_score === user_score){
+            return "Its a tie!"
+        }else if(computer_score>user_score){
+            return "Computer won!"
+        }else{
+            return "You won!"
+        }
 }
 
 function disableDrawCards(){
