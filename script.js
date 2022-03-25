@@ -24,7 +24,7 @@ fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/", {method: "GE
     document.getElementById("remainingcards").innerText = `Remaining cards: ${data.remaining}` 
 })
 deck_done = false
-document.getElementById("drawcards").style.display = "block"
+enableDrawCards()
 }
 
 function drawCards(){
@@ -46,9 +46,9 @@ function drawCards(){
         // if no cards left
     if(data.remaining===0){
         deck_done===true
-        // gets overwritten by score
         document.getElementById("game-announcements").innerText = "Deck finished! Draw new deck"
-        document.getElementById("drawcards").style.display = "none"
+        // hide draw cards button
+        disableDrawCards()
     }
     })
     
@@ -57,6 +57,17 @@ function drawCards(){
 else{
     console.log("Need new deck")
 }
+}
+
+function disableDrawCards(){
+    document.getElementById("drawcards").style.display = "none"
+    // document.getElementById("drawcards").button.disabled = true
+}
+
+function enableDrawCards(){
+    document.getElementById("drawcards").style.display = "block"
+    // document.getElementById("drawcards").button.disabled = false
+
 }
 
 function renderCards(){
@@ -107,18 +118,22 @@ function determineHigherScore(card1, card2){
     // const card2ValueIndex = arrayofcards.indexOf(card2.value)
     const card1_score = determineScore(card1)
     // console.log("Card1_score: ", card1_score)
-    document.getElementById("computerscore").innerText= `Computer: ${card1_score}`
+    document.getElementById("computerscore").innerText= `Computer: ${card1_score} Score: ${computer_score}`
     const card2_score = determineScore(card2)
     // console.log("Card2_score: ", card2_score)
-    document.getElementById("myscore").innerText= `Me: ${card2_score}`
+    document.getElementById("myscore").innerText= `Me: ${card2_score} Score: ${user_score}`
     if(card1_score===card2_score){
         // console.log("cards equal")
         return "Its a tie! War!"
     }else if(card1_score>card2_score){
             // console.log("Card 1 has larger score")
+            computer_score+=1
+            document.getElementById("computerscore").innerText= `Computer: ${card1_score} Score: ${computer_score}`
             return "Computer wins!"
         }else{
             // console.log("card 2 has larger score")
+            user_score+=1
+            document.getElementById("myscore").innerText= `Me: ${card2_score} Score: ${user_score}`
             return "You win!"
         }
 }
