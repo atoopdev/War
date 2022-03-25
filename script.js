@@ -14,13 +14,13 @@ document.getElementById("drawcards").addEventListener("click", drawCards)
 
 
 function getNewDeck(){
-    console.log("Button clicked")
+    // console.log("Button clicked")
 fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/", {method: "GET"})
 .then(response => response.json())
 .then(data =>{
-    console.log(data)
+    // console.log(data)
     deck_id = data.deck_id
-    console.log("Deck id: ", deck_id)
+    // console.log("Deck id: ", deck_id)
     document.getElementById("remainingcards").innerText = `Remaining cards: ${data.remaining}` 
 })
 deck_done = false
@@ -35,13 +35,13 @@ function drawCards(){
     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deck_id}/draw/?count=2`, {method: "GET"})
     .then(response => response.json())
     .then(data =>{
-        console.log("Drawn cards: ", data)
+        // console.log("Drawn cards: ", data)
         document.getElementById("remainingcards").innerText = `Remaining cards: ${data.remaining}`
         for(let card of data.cards){
             // changing from pop to allow new cards dealt to auto appear
             cards.unshift(card)
         }
-        console.log("Cards array: ", cards)
+        // console.log("Cards array: ", cards)
     renderCards()
         // if no cards left
     if(data.remaining===0){
